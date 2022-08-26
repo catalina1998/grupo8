@@ -6,9 +6,14 @@
     <form action="/roles/{{ $rol->id }}" method="POST">  
         @csrf
         @method('DELETE')
+
         <button>Eliminar rol</button>
+        <br>
     </form>
+    <br>
+    <a href="/roles/main/edit/{{$rol->id}}"> Editar</a>
 
 </div>
-<a href="/" class="back"><- Volver al inicio</a>
+<br>
+<a href="/roles/main" class="back"><- Volver</a>
 @endsection

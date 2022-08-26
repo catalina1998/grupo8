@@ -33,8 +33,23 @@ class RolesController extends Controller
     }
 
     public function destroy($id){
-        $pizza = Rol::findOrFail($id);
-        $pizza->delete();
+        $rol = Rol::findOrFail($id);
+        $rol->delete();
         return redirect('/roles/main')->with('mssg', 'Rol eliminado');
     }
+
+    public function edit($id){
+        $rol= Rol::find($id);
+        return view('roles.edit', ['rol'=>$rol]);
+    }
+    
+    public function update(Request $req){
+        // return $req->input();
+        $data=Rol::find($req->id);
+        $data->rol=$req->rol;
+        $data->save();
+        return redirect('/roles/main')->with('mssg', 'Rol editado');
+    }
+
+
 }

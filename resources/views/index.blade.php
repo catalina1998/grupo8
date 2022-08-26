@@ -7,7 +7,8 @@
             Grupo 8
             <img src="/img/ScrumKanban.png" alt="inicio foto">
         </div>
-        <a href="/roles/main"> Roles </a>
+        <h2><a href="/roles/main"> Roles </a></h2>
+        <h2><a href="/users/main"> Users </a></h2>
     </div>
 </div>
 @endsection
