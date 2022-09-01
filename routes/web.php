@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'App\Http\Controllers\InicioController@index');
+
+//Rutas de roles
 Route::get('/roles/main', 'App\Http\Controllers\RolesController@index');
 Route::get('/roles/{modulo}', 'App\Http\Controllers\RolesController@show');
 Route::get('/roles/main/create', 'App\Http\Controllers\RolesController@create');
@@ -26,11 +28,17 @@ Route::Delete('/roles/{modulo}', 'App\Http\Controllers\RolesController@destroy')
 Route::get('/roles/main/edit/{id}', 'App\Http\Controllers\RolesController@edit');
 Route::post('/roles/main/edited','App\Http\Controllers\RolesController@update');
 
+
+//Rutas de usuarios
 Route::get('/users/main', 'App\Http\Controllers\UserController@index');
 Route::Delete('/users/{id}', 'App\Http\Controllers\UserController@destroy');
 Route::get('/users/main/edit/{id}', 'App\Http\Controllers\UserController@edit');
 Route::post('/users/main/edited','App\Http\Controllers\UserController@update');
 
+//rutas de permisos
+Route::get('/permisos/main', 'App\Http\Controllers\PermissionController@index');
+Route::get('/permisos/main/create', 'App\Http\Controllers\PermissionController@create');
+Route::post('/permisos/main','App\Http\Controllers\PermissionController@store');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

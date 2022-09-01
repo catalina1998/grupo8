@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="rol-details">
-    <h1>{{ $rol->rol }}</h1>
+    <h1>{{ $rol->name }}</h1>
     <form action="/roles/{{ $rol->id }}" method="POST">  
         @csrf
         @method('DELETE')

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Rol;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
 {
@@ -11,13 +12,13 @@ class RolesController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $roles = Rol::all();
+        $roles = Role::all();
         return view('roles.index',
         ['roles'=>$roles,]);
     }
 
     public function show($id) {
-        $rol = Rol::findOrFail($id);
+        $rol = Role::findOrFail($id);
         return view('roles.show', ['rol'=>$rol]);
     }
 
@@ -26,27 +27,28 @@ class RolesController extends Controller
     }
 
     public function store(){
-        $rol=new Rol();
-        $rol->rol = request('name');
-        $rol->save();
-        return redirect('/roles/main')->with('mssg', 'Rol creado');
+        $name = request('name');
+        $role = Role::create(['name' => $name]);
+        
+        $role->save();
+        return redirect('/roles/main');
     }
 
     public function destroy($id){
-        $rol = Rol::findOrFail($id);
+        $rol = Role::findOrFail($id);
         $rol->delete();
         return redirect('/roles/main')->with('mssg', 'Rol eliminado');
     }
 
     public function edit($id){
-        $rol= Rol::find($id);
+        $rol= Role::find($id);
         return view('roles.edit', ['rol'=>$rol]);
     }
     
     public function update(Request $req){
         // return $req->input();
-        $data=Rol::find($req->id);
-        $data->rol=$req->rol;
+        $data=Role::find($req->id);
+        $data->name=$req->rol;
         $data->save();
         return redirect('/roles/main')->with('mssg', 'Rol editado');
     }

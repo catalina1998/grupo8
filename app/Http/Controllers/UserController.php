@@ -34,7 +34,7 @@ class UserController extends Controller
         $data=User::find($req->id);
         $data->name=$req->name;
         $data->email=$req->email;
-        $data->password=$req->password;
+        //$data->password=$req->password;
         $data->save();
         return redirect('/users/main');
     }
