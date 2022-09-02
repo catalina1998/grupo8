@@ -37,10 +37,11 @@
 
       <td><h4>{{ $role->id}}</td>
       <td><h4><a href="/roles/{{ $role->id }}">{{ $role->name}}</a></h4></td>
-            
-        @csrf
-        @method('DELETE')
-        {{-- <button>Eliminar usuario</button> --}}
+        <td>@foreach ($role->permissions as $rol_permission)
+            {{$rol_permission->name}},
+        @endforeach  
+        </td>            
+
         <br>
         
     </form></td>

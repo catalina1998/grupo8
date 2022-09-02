@@ -11,9 +11,10 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Acciones</th>
 
 
-      <th scope="col">Editar</th>
+      {{-- <th scope="col">Editar</th> --}}
 
     </tr>
   </thead>
@@ -23,7 +24,13 @@
 
       <td><h4>{{ $permiso->id}}</td>
       <td>{{$permiso->name}}</td>
-      <td><a href=""> Editar</a></td>
+      <td><a href="/permisos/main/edit/{{$permiso->id}}"> Editar</a> 
+        <form action="/permisos/{{$permiso->id}}" method="POST">  
+        @csrf
+        @method('DELETE')
+        <button>Eliminar</button>
+        <br>
+    </form></td>
     </form></td>
     </tr>
     @endforeach

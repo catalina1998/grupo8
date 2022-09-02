@@ -27,7 +27,8 @@ Route::post('/roles/main','App\Http\Controllers\RolesController@store');
 Route::Delete('/roles/{modulo}', 'App\Http\Controllers\RolesController@destroy');
 Route::get('/roles/main/edit/{id}', 'App\Http\Controllers\RolesController@edit');
 Route::post('/roles/main/edited','App\Http\Controllers\RolesController@update');
-
+Route::post('/roles/main/permissions', 'App\Http\Controllers\RolesController@givePermission');
+Route::delete('/roles/main/permissionsR', 'App\Http\Controllers\RolesController@revokePermission');
 
 //Rutas de usuarios
 Route::get('/users/main', 'App\Http\Controllers\UserController@index');
@@ -39,6 +40,10 @@ Route::post('/users/main/edited','App\Http\Controllers\UserController@update');
 Route::get('/permisos/main', 'App\Http\Controllers\PermissionController@index');
 Route::get('/permisos/main/create', 'App\Http\Controllers\PermissionController@create');
 Route::post('/permisos/main','App\Http\Controllers\PermissionController@store');
+Route::get('/permisos/main/edit/{id}', 'App\Http\Controllers\PermissionController@edit');
+Route::post('/permisos/main/edited','App\Http\Controllers\PermissionController@update');
+Route::Delete('/permisos/{id}', 'App\Http\Controllers\PermissionController@destroy');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

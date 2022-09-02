@@ -41,8 +41,9 @@ class RolesController extends Controller
     }
 
     public function edit($id){
+        $permissions = Permission::all();
         $rol= Role::find($id);
-        return view('roles.edit', ['rol'=>$rol]);
+        return view('roles.edit', ['rol'=>$rol], ['permissions'=>$permissions]);
     }
     
     public function update(Request $req){
@@ -51,6 +52,28 @@ class RolesController extends Controller
         $data->name=$req->rol;
         $data->save();
         return redirect('/roles/main')->with('mssg', 'Rol editado');
+    }
+
+    public function givePermission(Request $request)
+    {
+        //return $request->input();
+        $role=Role::find($request->idRole);
+        if($role->hasPermissionTo($request->permission)){
+            return back()->with('message', 'Permission exists.');
+        }
+        $role->givePermissionTo($request->permission);
+        return back()->with('message', 'Permission added.');
+    }
+
+    public function revokePermission(Request $req)
+    {
+        // return $req->input();
+        $role=Role::find($req->idRole);
+        if($role->hasPermissionTo($req->permission)){
+            $role->revokePermissionTo($req->permission);
+            return back()->with('message', 'Permission revoked.');
+        }
+        return back()->with('message', 'Permission not exists.');
     }
 
 
