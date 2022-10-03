@@ -38,7 +38,7 @@
                         </div>
                     </form>
                     <div class="mt-6 p-2 bg-slate-100">
-                        <h2 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Roles (click para remover)</h2>
+                        <h2 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Rol (click para remover)</h2>
                         <div  class="flex space-x-2 mt-4 p-2">
                     @if ($user->roles)
 
@@ -75,7 +75,7 @@
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <button type="submit"
-                                class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md">Assign</button>
+                                class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md">Asignar</button>
                         </div>
                         </form>
                         </div>

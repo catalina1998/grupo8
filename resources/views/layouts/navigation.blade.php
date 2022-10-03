@@ -20,7 +20,7 @@
                         {{ __('Seguridad') }}
                     </x-nav-link>
                     @endrole
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('proyectos.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Proyectos') }}
                     </x-nav-link>
                 </div>

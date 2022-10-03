@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-end">
-                    <a href="{{route('admin.roles.create')}}" class="px-4 py-2  hover:bg-gray-300 rounded-md">Nuevo</a>
+                    <a href="{{route('admin.roles.create')}}" class="px-4 py-2  bg-teal-400 hover:bg-teal-500 rounded-md">Nuevo</a>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="max-w-7xl mx-auto">

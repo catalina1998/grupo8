@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-end">
-                    <a href="{{route('admin.permissions.create')}}" class="px-4 py-2  hover:bg-gray-300 rounded-md">Nuevo</a>
+                    <a href="{{route('admin.permissions.create')}}" class="px-4 py-2  bg-teal-400 hover:bg-teal-500 rounded-md">Nuevo</a>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="max-w-7xl mx-auto">
@@ -15,8 +15,8 @@
                                         <tr>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">#</th>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Nombre</th>
-                                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                                <span class="sr-only">Actions</span>
+                                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-semibold text-gray-900">
+                                                <span >Acciones</span>
                                             </th>
                                         </tr>
                                     </thead>
