@@ -60,14 +60,22 @@ Route::middleware(['auth'])->name('proyectos.')->prefix('proyectos')->group(func
         Route::delete('/admin/{proyecto}/users/{user}', [App\Http\Controllers\Proyectos\ProyectoController::class, 'removeUser'])->name('admin.users.remove');
         Route::delete('/admin/{proyecto}', [App\Http\Controllers\Proyectos\ProyectoController::class, 'destroy'])->name('admin.destroy');
     });
+    //proyecto
     Route::get('/dev', [App\Http\Controllers\Proyectos\ProyectoController::class, 'indexdev'])->name('dev.index');
+    //backlog
     Route::get('/proyecto/{proyecto}/backlog', [App\Http\Controllers\Proyectos\BacklogController::class, 'index'])->name('backlog.index');
+    //user stories
     Route::get('/proyecto/backlog/{backlog}/user_stories', [App\Http\Controllers\Proyectos\UserStoryController::class, 'index'])->name('backlog.userstories');
     Route::get('/proyecto/backlog/{backlog}/user_stories/create', [App\Http\Controllers\Proyectos\UserStoryController::class, 'create'])->name('backlog.userstories.create');
     Route::post('/proyecto/backlog/{backlog}/user_stories/store', [App\Http\Controllers\Proyectos\UserStoryController::class, 'store'])->name('backlog.userstories.store');
     Route::get('/proyecto/backlog/{backlog}/user_stories/{user_story}/edit', [App\Http\Controllers\Proyectos\UserStoryController::class, 'edit'])->name('backlog.userstories.edit');
     Route::put('/proyecto/backlog/user_stories/{user_story}/update', [App\Http\Controllers\Proyectos\UserStoryController::class, 'update'])->name('backlog.userstories.update');
     Route::delete('/proyecto/backlog/user_stories/{user_story}/destroy', [App\Http\Controllers\Proyectos\UserStoryController::class, 'destroy'])->name('backlog.userstories.delete');
+
+    //sprints
+    Route::get('/proyecto/backlog/{backlog}/sprints', [App\Http\Controllers\Proyectos\SprintController::class, 'index'])->name('backlog.sprints');
+    Route::get('/proyecto/backlog/{backlog}/sprints/create', [App\Http\Controllers\Proyectos\SprintController::class, 'create'])->name('backlog.sprints.create');
+    Route::post('/proyecto/backlog/{backlog}/sprints/store', [App\Http\Controllers\Proyectos\SprintController::class, 'store'])->name('backlog.sprints.store');
 });
 
 

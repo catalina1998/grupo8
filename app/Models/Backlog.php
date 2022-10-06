@@ -16,4 +16,9 @@ class Backlog extends Model
     {
         return $this->hasMany(User_Story::class);
     }
+
+    public function sprint()
+    {
+        return $this->hasMany(Sprint::class);
+    }
 }
