@@ -13,4 +13,14 @@ class User_story extends Model
     {
         return $this->belongsTo(Backlog::class);
     }
+
+    public function sprint()
+    {
+        return $this->belongsTo(Sprint::class);
+    }
+
+    public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }

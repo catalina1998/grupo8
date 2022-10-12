@@ -13,4 +13,9 @@ class Sprint extends Model
     {
         return $this->belongsTo(Backlog::class);
     }
+    public function user_story()
+    {
+        return $this->hasMany(User_story::class);
+    }
+
 }

@@ -50,6 +50,11 @@
                                                             </a>
                                                         </div>
                                                         <div class="" role="none">
+                                                            <a href="{{ route('proyectos.sprint.userstories', $sprint->id) }}" class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                                                                User Stories
+                                                            </a>
+                                                        </div>
+                                                        <div class="" role="none">
                                                             <form class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0" method="POST" action="" onsubmit="return confirm('Desea eliminar el rol?');">
                                                                 @csrf
                                                                 @method('DELETE')

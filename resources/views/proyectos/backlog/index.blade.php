@@ -11,7 +11,7 @@
                 
             </div>
             <h1>{{$backlog->descripcion}}</h1> <br><br>
-            <a href="{{route('proyectos.backlog.userstories', $backlog->id, $proyecto->id)}}" class="px-4 py-2 bg-teal-400 hover:bg-teal-500 rounded-md">User Stories</a><br><br>
+
             <a href="{{route('proyectos.backlog.sprints', [$backlog->id, $proyecto->id])}}" class="px-4 py-2 bg-teal-400 hover:bg-teal-500 rounded-md">Sprints</a>
         </div>
     </div>

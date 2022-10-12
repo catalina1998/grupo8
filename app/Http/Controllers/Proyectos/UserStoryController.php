@@ -6,48 +6,43 @@ use Illuminate\Http\Request;
 use App\Models\Backlog;
 use App\Models\Proyecto;
 use App\Models\User_story;
+use App\Models\Sprint;
 
 class UserStoryController extends Controller
 {
-    public function index(Proyecto $proyecto, Backlog $backlog)
+    public function index(Sprint $sprint)
     {   
-        //return $backlog->descripcion;
-        return view('proyectos.user_stories.index', compact('proyecto', 'backlog'));
+        //return $sprint->backlog()->id;
+        return view('proyectos.user_stories.index', compact('sprint'));
     } 
 
-    public function create(Backlog $backlog)
+    public function create(Sprint $sprint)
     {
         //return $backlog;
-        return view('proyectos.user_stories.create', compact('backlog'));
+        return view('proyectos.user_stories.create', compact('sprint'));
     }
 
-    public function store(Request $request, Backlog $backlog)
+    public function store(Request $request, Sprint $sprint)
     {
         //$validated = $request->validate(['Nombre' => ['required']]);
         //return $request->descripcion;
         $user_story=new User_story;
         $user_story->descripcion=$request->descripcion;
         $user_story->prioridad=$request->prioridad;
-        $backlog->user_story()->save($user_story);
+        $user_story->user_id=auth()->user()->id;
+        //return $sprint;
+        //return auth()->user();
+        $sprint->user_story()->save($user_story);
+        //$user->user_story()->save($user_story);
         return back();
         //return($proyecto);
         $user_story->save();
-        $backlog= new Backlog;
-        $backlog->descripcion=$request->Nombre.' Backlog';
-        $proyecto->backlog()->save($backlog);
-        //return $backlog->descripcion;
-        //$proyecto->backlog()->
-        //return $proyecto;
-        // Proyecto::create($validated);
-        // return($validated);
-        return redirect()->route('proyectos.admin.index')
-            ->with('success', 'Proyecto created successfully.');
     }
 
-    public function edit(Backlog $backlog, User_story $user_story)
+    public function edit(Sprint $sprint, User_story $user_story)
     {
         //$users=User::all();
-        return view('proyectos.user_stories.edit', compact('backlog', 'user_story'));
+        return view('proyectos.user_stories.edit', compact('sprint', 'user_story'));
     }
 
     public function update(Request $request, User_story $user_story)
