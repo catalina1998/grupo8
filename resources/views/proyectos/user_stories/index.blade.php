@@ -22,7 +22,9 @@
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">User Story</th>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Prioridad</th>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Usuario</th>
+                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900">Estado</th>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900">Acciones</th>
+
                                             {{-- <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-semibold text-gray-900">
                                                 <span >Acciones</span>
                                             </th> --}}
@@ -35,6 +37,7 @@
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><textarea rows="3" cols="65">{{$user_story->descripcion}}</textarea></td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user_story->prioridad}}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user_story->user_id}}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user_story->estado}}</td>
                                             <td class="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <div class="inline-block text-left" x-data="{ menu: false }">
                                                     <button x-on:click="menu = ! menu" type="button" class="flex items-center text-gray-400 hover:text-gray-600 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true">
