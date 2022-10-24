@@ -45,7 +45,7 @@
                                                     </button>
                                                     <div x-show="menu" x-on:click.away="menu = false" class="origin-top-right absolute right-32 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                                         <div class="" role="none">
-                                                            <a href="" class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                                                            <a href="{{route('proyectos.backlog.sprints.edit', [$sprint->id, $backlog->id]) }}" class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0" >
                                                                 Editar
                                                             </a>
                                                         </div>
@@ -55,7 +55,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="" role="none">
-                                                            <form class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0" method="POST" action="" onsubmit="return confirm('Desea eliminar el rol?');">
+                                                            <form class="text-gray-500 font-medium hover:text-gray-900 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0" method="POST" action="{{route('proyectos.backlog.sprints.delete', $sprint->id) }}" onsubmit="return confirm('Desea eliminar el sprint?');">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit">Eliminar</button>

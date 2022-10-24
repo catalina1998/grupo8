@@ -76,6 +76,9 @@ Route::middleware(['auth'])->name('proyectos.')->prefix('proyectos')->group(func
     Route::get('/proyecto/backlog/{backlog}/sprints', [App\Http\Controllers\Proyectos\SprintController::class, 'index'])->name('backlog.sprints');
     Route::get('/proyecto/backlog/{backlog}/sprints/create', [App\Http\Controllers\Proyectos\SprintController::class, 'create'])->name('backlog.sprints.create');
     Route::post('/proyecto/backlog/{backlog}/sprints/store', [App\Http\Controllers\Proyectos\SprintController::class, 'store'])->name('backlog.sprints.store');
+    Route::get('/proyecto/backlog/sprints/{sprint}/edit', [App\Http\Controllers\Proyectos\SprintController::class, 'edit'])->name('backlog.sprints.edit');
+    Route::post('/proyecto/backlog/sprints/{sprint}/update', [App\Http\Controllers\Proyectos\SprintController::class, 'update'])->name('backlog.sprints.update');
+    Route::delete('/proyecto/backlog/{backlog}/sprints/destroy', [App\Http\Controllers\Proyectos\SprintController::class, 'destroy'])->name('backlog.sprints.delete');
 });
 
 

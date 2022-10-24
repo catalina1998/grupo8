@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->longText('descripcion');
             $table->integer('prioridad');
+            $table->string('estado');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('sprint_id')->constrained()->onDelete('cascade');
             $table->timestamps();

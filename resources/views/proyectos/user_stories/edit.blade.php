@@ -27,24 +27,20 @@
                               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                 Prioridad: 
                               </label>
-                              <br>
                               <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                 (1 mayor prioridad, 5 menor prioridad)
                                 
                               </label>
-                              <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                Valor actual: {{$user_story->prioridad}}
-                                
-                              </label>
+
                               <select id="prioridad" name="prioridad" value="">
-                                <script language="javascript" type="text/javascript"> 
-                                
-                                for(var d=1;d<=5;d++)
-                                {
-                                    document.write("<option>"+d+"</option>");
-                                }
-                                </script>
-                                </select>
+                                <option selected hidden value={{$user_story->prioridad}}> {{$user_story->prioridad}} </option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+
+                              </select>
                                 
                               @error('name') <span class="text-red-400 text-sm">{{ $message }}</span> @enderror
                             </div>
@@ -52,6 +48,21 @@
                         
                         <br>
 
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                          <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                              Estado: 
+                            </label>
+                            <select id="estado" name="estado">
+                              <option selected hidden> {{$user_story->estado}} </option>
+                              <option value = "TO DO"> TO DO </option>
+                              <option value = "DOING"> DOING </option>
+                              <option value = "DONE"> DONE </option>
+                            </select>
+                              
+                            @error('name') <span class="text-red-400 text-sm">{{ $message }}</span> @enderror
+                          </div>
+                        </div>
                           <div class="md:w-1/3">
                             <button class="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none font-bold py-2 px-4 rounded" type="submit">
                               Editar

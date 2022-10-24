@@ -30,6 +30,7 @@ class UserStoryController extends Controller
         $user_story->descripcion=$request->descripcion;
         $user_story->prioridad=$request->prioridad;
         $user_story->user_id=auth()->user()->id;
+        $user_story->estado='TO DO';
         //return $sprint;
         //return auth()->user();
         $sprint->user_story()->save($user_story);
@@ -49,9 +50,10 @@ class UserStoryController extends Controller
     {
         //return $user_story;
         $data = User_story::find($user_story->id);
-        //return $data;
+        //return $request;
         $data->descripcion=$request->descripcion;
         $data->prioridad=$request->prioridad;
+        $data->estado=$request->estado;
         $data->save();
 
         return back();

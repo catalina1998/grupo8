@@ -26,6 +26,13 @@ class SprintController extends Controller
         return view('proyectos.sprints.create', compact('backlog', 'date'));
     }
 
+    public function edit(Sprint $sprint, Backlog $backlog)
+    {   
+        //return $backlog;
+        return view('proyectos.sprints.edit', compact('sprint'));
+    } 
+
+
     public function store(Request $request, Backlog $backlog)
     {
         //$validated = $request->validate(['Nombre' => ['required']]);
@@ -46,5 +53,25 @@ class SprintController extends Controller
         $backlog->sprint()->save($sprint);
         return back();
         //return($proyecto);
+    }
+
+    public function update(Request $request, Sprint $sprint)
+    {
+        //return $sprint;
+        $data = Sprint::find($sprint->id);
+        //return $request;
+        $data->descripcion=$request->descripcion;
+        $data->inicio=$request->inicio;
+        $data->fin=$request->fin;
+        $data->save();
+
+        return back();
+    }
+    public function destroy($id)
+    {
+        //return $id;
+        $sprint = Sprint::find($id)->delete();
+
+        return back();
     }
 }
