@@ -74,5 +74,96 @@
                 </div>
             </div>
         </div>
-    </div>                
+    </div> 
+    
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Copyright (c) 2011  Rally Software Development Corp.  All rights reserved -->
+<head>
+    <title>Kanban Board</title>
+    <meta name="Name" content="App: Kanban Board"/>
+    <meta name="Version" content="2013.04.09"/>
+    <meta name="Vendor" content="Rally Software"/>
+    <script type="text/javascript" src="/apps/1.32/sdk.js?apiVersion=1.41"></script>
+    <script type="text/javascript">
+        //this function will help us by getting our default project and workspace to help with external kanban development.
+        var WORKSPACE_OID,PROJECT_OID,PROJECT_SCOPE_UP,PROJECT_SCOPE_DOWN;
+        function projectParser(response) {
+            var meta = response.QueryResult.Meta;
+            var numberYankingRegex = /[^\d]/g;
+            WORKSPACE_OID = meta.workspace.replace(numberYankingRegex, '');
+            PROJECT_OID = meta.project.replace(numberYankingRegex, '');
+        }
+    </script>
+
+    <script type="text/javascript">
+        /*configure following if you plan to run the Kanban app externally
+         rally.sdk.info.server = "https://community.rallydev.com/slm";*/
+        // var WORKSPACE_OID = "1234";
+        // var PROJECT_OID = "54678";
+        // var PROJECT_SCOPE_UP = false;
+        // var PROJECT_SCOPE_DOWN = true;
+        /********************************/
+
+        var projectOid = '__PROJECT_OID__';
+        projectOid = projectOid.indexOf("__") !== -1 ? PROJECT_OID : projectOid;
+        var workspaceOid = '__WORKSPACE_OID__';
+        workspaceOid = workspaceOid.indexOf("__") !== -1 ? WORKSPACE_OID : workspaceOid;
+        var projectScopeUp = '__PROJECT_SCOPING_UP__';
+        projectScopeUp = projectScopeUp.indexOf("__") !== -1 ? PROJECT_SCOPE_UP : projectScopeUp;
+        var projectScopeDown = '__PROJECT_SCOPING_DOWN__';
+        projectScopeDown = projectScopeDown.indexOf("__") !== -1 ? PROJECT_SCOPE_DOWN : projectScopeDown;
+
+        function onLoad() {
+            var rallyDataSource = new rally.sdk.data.RallyDataSource(workspaceOid,
+                    projectOid, projectScopeUp, projectScopeDown);
+
+            rallyDataSource.projectOid = projectOid;
+            rallyDataSource.workspaceOid = workspaceOid;
+            rallyDataSource.projectScopeUp = projectScopeUp;
+            rallyDataSource.projectScopeDown = projectScopeDown;
+
+            var kanbanBoard;
+            rallyDataSource.find({
+                     key: 'WorkspaceConfiguration',
+                     type: 'WorkspaceConfiguration',
+                     fetch: 'DragDropRankingEnabled'
+                 }, function(results) {
+                     var isManualRankWorkspace = !results.WorkspaceConfiguration[0].DragDropRankingEnabled;
+                     kanbanBoard = new KanbanBoard(rallyDataSource, isManualRankWorkspace);
+                     kanbanBoard.display(dojo.body());
+                 }
+            );
+        }
+        rally.addOnLoad(onLoad);
+    </script>
+
+</head>
+<body>
+<div style="display:none">
+    <div id="configPanel">
+        <div id="configHelp"></div>
+        <div id="stateDropdown"></div>
+        <table id="configTable" cellspacing="15">
+            <tbody id="configTableBody">
+            <tr class="tableHeaderRow">
+                <td>Column</td>
+                <td>Display</td>
+                <td>WIP Limit</td>
+                <td>Schedule State Mapping</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="hideCardsCheckBox"></div>
+        <div id="showTasksCheckBox"></div>
+        <div id="showDefectsCheckBox"></div>
+        <div>
+            <span id="showAgeCheckBox"></span>
+            <span id="showAgeTextBox"></span>
+        </div>
+        <div id="colorByArtifactTypeCheckBox"></div>
+        <div id="msgContainer"></div>
+    </div>
+</div>
+</body>
 </x-proyectos-layout>
+

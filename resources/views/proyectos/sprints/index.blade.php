@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex p-2">
                     
-                    <a href="{{route('proyectos.backlog.index', $backlog->proyecto->id)}}" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md">Volver</a>
+                    <a href="{{route('proyectos.dev.index')}}" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md">Volver</a>
                 </div><br>
 
                 <h1>{{$backlog->descripcion}}</h1>

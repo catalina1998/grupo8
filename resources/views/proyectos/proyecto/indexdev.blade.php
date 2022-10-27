@@ -36,7 +36,7 @@
                                                 @endforeach  
                                             </td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                <a href="{{route('proyectos.backlog.index', $proyecto->id)}}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md">Backlog</a>
+                                                <a href="{{route('proyectos.backlog.sprints', [$proyecto->backlog, $proyecto->id])}}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md">Backlog</a>
                                             </td>
                                             {{-- <td class="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <div class="inline-block text-left" x-data="{ menu: false }">
